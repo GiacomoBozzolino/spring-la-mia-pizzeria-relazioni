@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+    <title>Insert title here</title>
+</head>
+<body>
+<div class="container-fluid app-container border border-black">
+    <header th:replace="frags :: header"></header>
+    <main>
+        <div class="container-fluid">
+            <div class="row p-5">
+                <div class="col-12">
+                    <div>
+                        <form>
+                            <label for="search">SEARCH</label>
+                            <input id="search" type="text" name="search" th:value="${search}">
+                            <input type="submit" value="SEARCH">
+                        </form>
+                    </div>
+                    <div>
+                        <a class="btn btn-success" href="/pizzas/create">Aggiungi una nuova pizza:</a>
+                    </div>
+                </div>
+                <div class="col-12 text-center" th:if="${pizzas.isEmpty()}">
+                    <span>Nessun elemento trovato</span>
+                </div>
+                <div class="col-12" th:each="pizza : ${pizzas}">
+                    <a class="btn btn-primary border rounded-pill border-black text-decoration-none text-black text-center fs-5 my-3 py-3"
+                       th:href="@{/pizzas/{pizzaId} (pizzaId=${pizza.getId()})}">
+                        <span class="btn btn-info" th:text="${pizza.getNome()}"></span>
+                        <a th:href="@{/pizzas/edit/{id} (id=${pizza.getId()})}">EDIT</a>
+                       <form style="display:inline-block"
+					      th:action="@{/pizzas/delete/{id} (id=${pizza.getId()})}"
+					      method="POST">
+					    <input type="submit" value="DELETE">
+					</form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<!-- Bootstrap Bundle with Popper -->
+<script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

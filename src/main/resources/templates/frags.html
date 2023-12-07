@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css} "/>
+<title>Insert title here</title>
+</head>
+<body>
+		
+		<style th:fragment="style">
+			.app-container{
+				width: 75vh;
+				margin-top: 100px;
+				margin-bottom: 100px;
+				justify-content: center;
+				align-items: center;
+			}
+	
+			.main-text{
+				width: 500px;
+				height: 200px;
+			}
+		</style>
+		
+		<header th:fragment="header">
+			<div class="container-fluid p-0">
+				<div class="row">
+					<div class="col-12 text-center border-bottom border-black py-4">
+						<h1>Pizza</h1>
+					</div>
+				</div>
+			</div>
+		</header>
+		
+		<div 
+			th:fragment="homebutton(title)"
+			class="col-12 text-center mt-5"
+			>
+			<a href="/" th:text="${title}" class="btn btn-sm btn-primary border border-black mx-2 px-4"></a>
+		</div>
+		
+		
+		<div class="text-danger" th:fragment="errorDiv(field)"
+			th:if="${#fields.hasErrors(field)}">
+			<ul class="list-unstyled">
+			   <li 
+			   		th:each="err : ${#fields.errors(field)}">
+			   		[[${err}]]	
+			   	</li>
+			</ul>
+		</div>
+		
+	</body>
+</html>

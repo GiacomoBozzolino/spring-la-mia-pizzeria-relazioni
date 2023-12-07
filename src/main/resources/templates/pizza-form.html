@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css} "/>
+<title>Insert title here</title>
+</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<h1 class="m-5">Aggiungi una pizza</h1>
+				</div>
+				<div class="col-12">
+				
+					<form
+						th:object="${pizza}"
+						method="POST"
+						class="form-control"
+						>
+						<label for="nome">Nome</label>
+						<input class="form-control" type="text" id="nome" th:field="*{nome}">
+						<br>
+						<div th:replace="frags :: errorDiv('nome')"/>
+						
+						<label for="descrizione">Descrizione</label>
+						<input class="form-control"  type="text" id="descrizione" th:field="*{descrizione}">
+						<br>	
+						<div th:replace="frags :: errorDiv('descrizione')"/>
+						
+						<label for="prezzo">Prezzo</label>
+						<input class="form-control" type="text" id="prezzo" th:field="*{prezzo}">
+						<br>		
+						<div  class:"invalid-feedback" th:replace="frags :: errorDiv('prezzo')"/>
+						
+						<label for="foto">Foto</label>
+						<input  class="form-control" type="text" id="foto" th:field="*{foto}">
+						<br>	
+						<div th:replace="frags :: errorDiv('foto')"/>
+						<button class="btn btn-primary" type="submit" value="STORE">Crea la pizza</button>
+					</form>	
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>
