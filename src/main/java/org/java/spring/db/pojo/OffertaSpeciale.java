@@ -32,11 +32,12 @@ public class OffertaSpeciale {
 		this.pizza = pizza;
 	}
 	public OffertaSpeciale() {}
-	public OffertaSpeciale(String titolo, LocalDate dataDiInizio, LocalDate dataDiFine ) {
+	public OffertaSpeciale(String titolo, LocalDate dataDiInizio, LocalDate dataDiFine, Pizza pizza ) {
 		// TODO Auto-generated constructor stub
 		setTitolo(titolo);
 		setDataDiInizio(dataDiInizio);
 		setDataDiFine(dataDiFine);
+		setPizza(pizza);
 	}
 
 

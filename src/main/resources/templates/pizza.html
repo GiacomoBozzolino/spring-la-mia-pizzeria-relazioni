@@ -21,6 +21,27 @@
 						</div>
 						<div th:replace="frags :: homebutton('Home')"></div>
 					</div>
+					<div class="col-12 text-center">
+					    <h4>Offerte Speciali:</h4>
+					    <ul>
+					        <!-- Loop sulle offerte speciali associate alla pizza -->
+					        <li th:each="offerta : ${pizza.offertaSpeciale}">
+					            <span th:text="${offerta.getTitolo()}"></span>
+					            <span th:text="' - ' + ${offerta.getDataDiInizio()} + ' - ' + ${offerta.getDataDiFine()}"></span>
+					            <!-- Aggiunta: Bottone per modificare l'offerta speciale -->
+					            <a th:href="@{/pizzas/{pizza_id}/offerte/edit/{offerta_id}(pizza_id=${pizza.id}, offerta_id=${offerta.id})}" class="btn btn-sm btn-warning mx-2">
+					                Modifica
+					            </a>
+					        </li>
+					    </ul>
+					</div>
+
+					<!-- Aggiunta: Bottone per creare nuova offerta speciale -->
+					<div class="col-12 text-center mt-3">
+					    <a th:href="@{/pizzas/{pizza_id}/offerte (pizza_id=${pizza.getId()})}" class="btn btn-primary">
+					        Crea nuova offerta speciale
+					    </a>
+					</div>
 				</div>
 			</main>
 		</div>

@@ -2,7 +2,9 @@ package org.java.spring.controller;
 
 import java.util.List;
 
+import org.java.spring.db.pojo.OffertaSpeciale;
 import org.java.spring.db.pojo.Pizza;
+import org.java.spring.db.serv.OffertaSpecialeService;
 import org.java.spring.db.serv.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,7 @@ public class MainController {
 	
 	@Autowired
 	private PizzaService pizzaService;
+
 	
 	@GetMapping
 	public String getPizza(Model model,
@@ -36,7 +39,6 @@ public class MainController {
 		return "pizzas";
 		
 	}
-	
 	
 		@GetMapping("/pizzas/{id}")
 		public String getPizza(Model model, @PathVariable int id) {
@@ -57,8 +59,6 @@ public class MainController {
 			
 			return "pizza-form";
 		}
-		
-		
 		
 		
 		@PostMapping("/pizzas/create")
@@ -105,4 +105,8 @@ public class MainController {
 			return "redirect:/";
 		}
 		
+	    
+	    
+
+	    
 }
